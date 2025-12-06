@@ -9,8 +9,7 @@ function App() {
   const [todos, settodos] = useState([]);
   const [left, setleft] = useState(() => {
     var data = localStorage.getItem("todo");
-    var arr = JSON.parse(data);
-    var len = arr.length;
+    var len = JSON.parse(data).length;
     return len;
   });
   const [inputvalue, setvalue] = useState("");
@@ -33,20 +32,25 @@ function App() {
       text: inputvalue.trim(),
       completed: false,
     };
-    const currenttodos = todos ? todos : [];
-    const newtodos = [...currenttodos, newtodo];
+    const newtodos = [...todos, newtodo];
+    setleft((prevLeft) => prevLeft + 1);
     settodos(newtodos);
     savetodo(newtodos);
   }
   function del(del) {
     const updated = todos.filter((todo, index) => index != del);
+    setleft((prevLeft) => prevLeft - 1);
     settodos(updated);
     savetodo(updated);
   }
   function check(check) {
     const updated = todos.map((todo, index) => {
       if (index === check) {
-        setleft(left - 1);
+        if (todo.completed) {
+          setleft((prevLeft) => prevLeft + 1);
+        } else {
+          setleft((prevLeft) => prevLeft - 1);
+        }
         return { ...todo, completed: !todo.completed };
       }
       return todo;
