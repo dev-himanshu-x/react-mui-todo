@@ -7,6 +7,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 function App() {
   const [todos, settodos] = useState([]);
+  const [message, setmessage] = useState("");
   const [left, setleft] = useState(() => {
     var data = localStorage.getItem("todo");
     var len = JSON.parse(data).length;
@@ -26,7 +27,7 @@ function App() {
   function submit(e) {
     e.preventDefault();
     if (inputvalue.trim() === "") {
-      return;
+      return setmessage("To do is empty");
     }
     const newtodo = {
       text: inputvalue.trim(),
@@ -36,6 +37,7 @@ function App() {
     setleft((prevLeft) => prevLeft + 1);
     settodos(newtodos);
     savetodo(newtodos);
+    setmessage("");
   }
   function del(del) {
     const updated = todos.filter((todo, index) => index != del);
@@ -61,7 +63,7 @@ function App() {
   return (
     <div className="d-flex justify-content-center align-items-center flex-column p-4">
       <form onSubmit={submit}>
-        <Box sx={{ display: "flex", gap: 1, mb: 3 }}>
+        <Box sx={{ display: "flex", gap: 1 }}>
           <TextField
             fullWidth
             label="Write To-do"
@@ -79,11 +81,23 @@ function App() {
       <div style={{ minWidth: 320 }}>
         <Typography
           variant="body"
-          sx={{ mb: 2, display: "flex", justifyContent: "center" }}
+          sx={{
+            mb: 2,
+            mt: 2,
+            display: "flex",
+            justifyContent: "center",
+            color: "red",
+          }}
+        >
+          {message}
+        </Typography>
+        <Typography
+          variant="body"
+          sx={{ mb: 2, mt: 1, display: "flex", justifyContent: "center" }}
         >
           Total number of todos : {left}
         </Typography>
-        {Array.isArray(todos) &&
+        {todos &&
           todos.map((todo, index) => (
             <Paper
               key={index}
