@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import './index.css';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Dialog from "@mui/material/Dialog";
@@ -27,25 +27,24 @@ const darkTheme = createTheme({
 });
 
 function App() {
-  const [todos, settodos] = useState([]);
+  const [todos, settodos] = useState(() => {
+    try {
+      const storedtodos = localStorage.getItem("todo");
+      if (!storedtodos) {
+        return [];
+      }
+      const parsed = JSON.parse(storedtodos);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (e) {
+      console.error("Failed to parse todos from local storage", e);
+      return [];
+    }
+  });
   const [inputvalue, setvalue] = useState("");
   
   const [editIndex, setEditIndex] = useState(null);
   const [editValue, setEditValue] = useState("");
   const [deleteIndex, setDeleteIndex] = useState(null);
-
-  useEffect(() => {
-    try {
-      const storedtodos = localStorage.getItem("todo");
-      if (storedtodos) {
-        const parsed = JSON.parse(storedtodos);
-        settodos(Array.isArray(parsed) ? parsed : []);
-      }
-    } catch (e) {
-      console.error("Failed to parse todos from local storage", e);
-      settodos([]);
-    }
-  }, []);
 
   function savetodo(save) {
     localStorage.setItem("todo", JSON.stringify(save));

@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg: #d4cbb3;
   --app-bg: #111111; 
   --primary: #ff5436;
   --green: #4dd566;
@@ -62,14 +61,6 @@ body {
 
 .logo span {
   color: var(--primary);
-}
-
-.exit-icon {
-  fill: var(--text-main);
-  opacity: 0.7;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
 }
 
 .header-right {
@@ -243,4 +234,113 @@ body {
   stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+@media (max-width: 1024px) {
+  .app-card {
+    padding: 16px 18px;
+  }
+
+  .app-header {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .input-group {
+    grid-column: 1 / -1;
+    order: 3;
+  }
+
+  .header-right {
+    justify-content: flex-end;
+  }
+
+  .progress-card {
+    padding: 10px 16px;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-card {
+    padding: 14px 12px 18px;
+  }
+
+  .app-header {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .logo-container,
+  .header-right {
+    justify-content: center;
+  }
+
+  .logo {
+    font-size: 1.35rem;
+  }
+
+  .input-group {
+    order: 2;
+    gap: 10px;
+  }
+
+  .task-input {
+    padding: 14px 18px;
+    font-size: 0.96rem;
+  }
+
+  .add-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 1.35rem;
+  }
+
+  .progress-card {
+    width: 100%;
+    max-width: 340px;
+    justify-content: space-between;
+    border-radius: 16px;
+    padding: 10px 14px;
+  }
+
+  .progress-text h2 {
+    font-size: 1rem;
+  }
+
+  .progress-text p {
+    font-size: 0.82rem;
+  }
+
+  .progress-circle {
+    width: 52px;
+    height: 52px;
+    font-size: 1.05rem;
+  }
+
+  .task-list {
+    gap: 12px;
+  }
+
+  .task-item {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .task-text {
+    font-size: 0.98rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.35;
+  }
+
+  .task-actions {
+    gap: 8px;
+  }
+
+  .action-icon {
+    width: 20px;
+    height: 20px;
+  }
 }
