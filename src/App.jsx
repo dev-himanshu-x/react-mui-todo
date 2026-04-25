@@ -7,6 +7,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import { Analytics } from '@vercel/analytics/react';
 
 const darkTheme = createTheme({
   palette: {
@@ -227,6 +228,7 @@ function App() {
           <Button onClick={handleDeleteConfirm} variant="contained" color="error">Delete</Button>
         </DialogActions>
       </Dialog>
+      <Analytics />
     </ThemeProvider>
   );
 }
