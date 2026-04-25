@@ -1,63 +1,25 @@
 # XERO TODO App
 
-A sleek, robust, and modern To-Do application built with React, Vite, and Material UI. This project features a stunning premium dark mode UI and leverages custom MUI Dialogs to provide an excellent user experience for task management.
+A todo app built with React, Vite, Tailwind CSS, and Material UI dialogs.
 
 ## Features
 
-- **Ultra-Modern UI:** A beautiful, custom dark theme with careful attention to layout typography and spacing.
-- **Robust Layout:** A CSS-Grid based full-screen layout that elegantly positions the Logo, Task Input, and Progress Tracker side-by-side using full width responsive rules.
-- **Local Storage Integration:** Tasks are saved seamlessly to your browser's local storage so you'll never lose them between sessions.
-- **Task Management:** Features all CRUD capabilities—Create, Read, Update (Edit), and Delete.
-- **MUI Modal Overlays:** Employs Material UI Dialog overlays for both Editing tasks and Confirming Deletions, keeping you in context without using disruptive native browser prompts.
-- **Live Progress Tracking:** Monitor your completion status at a glance with the dynamic circular "Todo Done" widget.
+- Create, complete, edit, and delete tasks
+- Persist tasks in localStorage
+- Responsive dark UI
 
-## Technology Stack
+## Tech Stack
 
-- **React 19**
-- **Vite** (Next generation frontend tooling)
-- **Material UI (MUI)** (For Dialog components & Custom Theming)
+- React 19
+- Vite
+- Tailwind CSS
+- Material UI
 
-## Getting Started
-
-### Prerequisites
-Make sure you have [Node.js](https://nodejs.org/) installed on your system.
-
-### Installation
-
-1. Clone or download the source code, then navigate to the project directory:
-   ```bash
-   cd todo-react-js
-   ```
-
-2. Install all required dependencies (including `@mui/material` and `@emotion`):
-   ```bash
-   npm install
-   ```
-
-### Running the Development Server
-
-Start the application locally in development mode by running:
+## Commands
 
 ```bash
+npm install
 npm run dev
-```
-
-Your server will typically start at `http://localhost:5173/` or `http://localhost:5174/`. Open it in your web browser.
-
-### Building for Production
-
-When you are ready to deploy your application, run the Vite build script:
-
-```bash
 npm run build
+npm run lint
 ```
-
-This will strip out all development tools and fully compile production-ready assets inside the `dist` directory.
-
-## Project Structure Notes
-
-- `src/App.jsx`: The workhorse component managing `localStorage` synchronization, rendering the header, Task List, and utilizing customized `MUI` components to render the Edit and Delete confirmation Modals.
-- `src/index.css`: Contains CSS variables and custom classes to drive the "Xero Todo" appearance—setting grid spacing, coloring for the custom checkmark actions, and full layout height behavior. 
-
-## Development Highlights
-*This project has been heavily refactored from its initial state to ditch legacy inline scripts and raw window EventListeners in favor of native React state handlers and robust UI component orchestration.*
